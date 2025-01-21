@@ -39,13 +39,14 @@ export default function DashboardLayout({
   return (
     <div 
       data-testid="dashboard-layout"
+      data-dashboard-layout
       className="relative min-h-screen bg-background"
     >
       <DashboardHeader 
         onMenuClick={() => setSidebarOpen(!sidebarOpen)}
         sidebarOpen={sidebarOpen}
       />
-      <div className="flex">
+      <div className="flex h-[calc(100vh-4rem)]">
         <AnimatePresence mode="wait" initial={false}>
           {sidebarOpen && (
             <motion.div
@@ -67,7 +68,7 @@ export default function DashboardLayout({
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-7xl space-y-6">
             {children}
           </div>
         </motion.main>

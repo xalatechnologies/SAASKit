@@ -17,21 +17,21 @@ export function DashboardHeader({ onMenuClick, sidebarOpen }: DashboardHeaderPro
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       data-testid="dashboard-header"
-      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      className="sticky top-0 z-50 h-16 w-full glass-effect"
     >
-      <div className="flex h-16 items-center gap-4 px-6">
+      <div className="flex h-full items-center gap-4 px-6">
         <Button
           variant="ghost"
           size="icon"
           onClick={onMenuClick}
           aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
           data-testid="sidebar-toggle"
-          className="lg:hidden"
+          className="lg:hidden hover:bg-white/5"
         >
           {sidebarOpen ? (
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5 text-sky-400" />
           ) : (
-            <Menu className="h-5 w-5" />
+            <Menu className="h-5 w-5 text-sky-400" />
           )}
         </Button>
         <div className="ml-auto flex items-center gap-4">
