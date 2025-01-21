@@ -18,7 +18,6 @@ export default function DashboardLayout({
   const router = useRouter()
   const isMobile = useMediaQuery("(max-width: 768px)")
 
-  // Auto-collapse sidebar on mobile
   useEffect(() => {
     if (isMobile) {
       setSidebarOpen(false)
@@ -27,7 +26,6 @@ export default function DashboardLayout({
     }
   }, [isMobile])
 
-  // Auth protection
   useEffect(() => {
     if (!user) {
       router.push("/login")
@@ -40,7 +38,6 @@ export default function DashboardLayout({
 
   return (
     <div 
-      data-dashboard-layout 
       data-testid="dashboard-layout"
       className="relative min-h-screen bg-background"
     >
@@ -55,7 +52,8 @@ export default function DashboardLayout({
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: "auto", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="z-30"
             >
               <Sidebar />
             </motion.div>
@@ -64,12 +62,14 @@ export default function DashboardLayout({
         <motion.main
           layout
           data-testid="dashboard-content"
-          className="flex-1 overflow-auto p-6"
+          className="flex-1 overflow-auto p-6 lg:p-8"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          {children}
+          <div className="mx-auto max-w-7xl">
+            {children}
+          </div>
         </motion.main>
       </div>
     </div>
